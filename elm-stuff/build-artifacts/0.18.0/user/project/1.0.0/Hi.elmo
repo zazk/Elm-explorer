@@ -4,17 +4,14 @@ var _user$project$Hi$subscriptions = function (model) {
 var _user$project$Hi$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
-		if (_p0.ctor === 'Expand') {
-			return {ctor: '_Tuple2', _0: true, _1: _elm_lang$core$Platform_Cmd$none};
-		} else {
-			return {ctor: '_Tuple2', _0: false, _1: _elm_lang$core$Platform_Cmd$none};
-		}
+		return {ctor: '_Tuple2', _0: model + _p0._0, _1: _elm_lang$core$Platform_Cmd$none};
 	});
-var _user$project$Hi$init = {ctor: '_Tuple2', _0: false, _1: _elm_lang$core$Platform_Cmd$none};
-var _user$project$Hi$Collapse = {ctor: 'Collapse'};
-var _user$project$Hi$Expand = {ctor: 'Expand'};
+var _user$project$Hi$init = {ctor: '_Tuple2', _0: 0, _1: _elm_lang$core$Platform_Cmd$none};
+var _user$project$Hi$Increment = function (a) {
+	return {ctor: 'Increment', _0: a};
+};
 var _user$project$Hi$view = function (model) {
-	return model ? A2(
+	return A2(
 		_elm_lang$html$Html$div,
 		{ctor: '[]'},
 		{
@@ -23,38 +20,41 @@ var _user$project$Hi$view = function (model) {
 				_elm_lang$html$Html$button,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Events$onClick(_user$project$Hi$Collapse),
+					_0: _elm_lang$html$Html_Events$onClick(
+						_user$project$Hi$Increment(2)),
 					_1: {ctor: '[]'}
 				},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('Collapse'),
+					_0: _elm_lang$html$Html$text('+'),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
 				ctor: '::',
-				_0: _elm_lang$html$Html$text('Widget'),
-				_1: {ctor: '[]'}
+				_0: _elm_lang$html$Html$text(
+					_elm_lang$core$Basics$toString(model)),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$button,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Events$onClick(
+								_user$project$Hi$Increment(2)),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('+'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
 			}
-		}) : A2(
-		_elm_lang$html$Html$div,
-		{ctor: '[]'},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$button,
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html_Events$onClick(_user$project$Hi$Expand),
-					_1: {ctor: '[]'}
-				},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text('Expand'),
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
 		});
 };
 var _user$project$Hi$main = _elm_lang$html$Html$program(
 	{init: _user$project$Hi$init, view: _user$project$Hi$view, update: _user$project$Hi$update, subscriptions: _user$project$Hi$subscriptions})();
+var _user$project$Hi$Decrement = function (a) {
+	return {ctor: 'Decrement', _0: a};
+};
